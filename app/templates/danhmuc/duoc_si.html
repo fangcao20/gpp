@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>THÔNG TIN DƯỢC SĨ</h3>
+    </div>
+    <div class="row">
+        <table class="table table-sm table-borderless">
+            <tr>
+                <td>Mã nhân viên</td>
+                <td><input type="text" class="form-control" disabled></td>
+                <td>Giới tính</td>
+                <td><div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="gioi-tinh" id="nam">Nam
+                </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="gioi-tinh" id="nu">Nữ
+                </div></td>
+                <td>Trực thuộc nhà thuốc</td>
+                <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Họ tên</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Số điện thoại</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Trình độ chuyên môn</td>
+                <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Email</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Ảnh</td>
+                <td><div class="d-flex flex-row justify-content-around">
+                    <div>
+                        <img id="selectedAvatar" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                        class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;" alt="example placeholder" />
+                    </div>
+                    <div class="mt-auto">
+                        <div class="btn btn-primary btn-rounded btn-sm">
+                            <label class="form-label text-white m-1" for="customFile2">Chọn ảnh</label>
+                            <input type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" />
+                        </div>
+                    </div>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="d-flex flex-row mb-2">
+        <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+        <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+        <button class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div class="row">
+        <div>
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã NV</th>
+                        <th>Tên NV</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Tuổi</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Trực thuộc nhà thuốc</th>
+                        <th>Trình độ chuyên môn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>NV001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>190010000</td>
+                        <td>email@gmail.com</td>
+                        <td>23</td>
+                        <td>Nam</td>
+                        <td>Phú Nhuận, TPHCM</td>
+                        <td>Nhà thuốc Phú Nhuận</td>
+                        <td>Dược sĩ Đại học</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/danh_muc.js"></script>
+{% endblock %}

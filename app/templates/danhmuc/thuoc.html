@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>CHI TIẾT THUỐC</h3>
+    </div>
+    <form>
+    <div class="row">
+        <table class="table table-sm table-borderless">
+            <tr>
+                <td>Mã thuốc</td>
+                <td><input type="text" class="form-control" disabled></td>
+                <td>Tên thuốc</td>
+                <td><input type="text" id="name" class="form-control"></td>
+                <td>Số đăng ký</td>
+                <td><input type="text" id="sdk" class="form-control"></td>
+                <td>Số lô</td>
+                <td><input type="text" id="solo" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Đơn vị tính</td>
+                <td width="210px"><select class="form-select" id="select_don_vi_tinh"></select></td>
+                <td>Hạn sử dụng</td>
+                <td><input type="date" id="han_su_dung" class="form-control"></td>
+                <td>BDG/Generic</td>
+                <td width="210px"><select class="form-select" id="bdg">
+                    <option value="B">Biệt dược gốc</option>
+                    <option value="G">Generic</option>
+                </select></td>
+                <td>Nhóm dược lý</td>
+                <td width="210px"><select class="form-select" id="select_nhom_duoc_ly"></select></td>
+            </tr>
+            <tr>
+                <td>Nhà cung cấp</td>
+                <td width="210px"><select class="form-select" id="select_nha_cung_cap"></select></td>
+                <td>Nhà sản xuất</td>
+                <td width="210px"><select class="form-select" id="select_nha_san_xuat"></select></td>
+                <td>Nước sản xuất</td>
+                <td width="210px"><select class="form-select" id="select_nuoc_san_xuat"></select></td>
+                <td>Điều kiện bảo quản</td>
+                <td><input type="text" id="dkbq" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Ghi chú</td>
+                <td colspan="3"><input type="text" id="note" class="form-control"></td>
+            </tr>
+        </table>
+        <hr>
+        <table class="table table-sm table-borderless">
+            <tr>
+                <td width="110px">Hoạt chất</td>
+                <td width="210px"><select class="form-select" id="select_hoat_chat"></select></td>
+                <td width="110px">Hàm lượng</td>
+                <td width="210px"><select class="form-select" id="select_ham_luong"></select></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-success" id="add_hoat_chat" onclick="addHoatChat()">+</button>
+                </td>
+                <td width="50px"><i class="fas fa-arrow-right-long" style="margin-left: 10px"></i></td>
+                <td id="show_hoat_chat">
+                    <div class="d-flex flex-row mb-1">
+                        <input type="text" class="form-control show-hoat-chat" disabled>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="delHoatChat(this)" style="margin-left: 10px">-</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div class="d-flex flex-row mb-2">
+        <button type="button" class="btn btn-sm func-btn btn-secondary" onclick="this.form.reset()">Xóa trắng</button>
+        <button type="button" class="btn btn-sm func-btn btn-primary" onclick="addThuoc()">Thêm</button>
+        <button type="button" class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button type="button" class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div class="row mb-3">
+        <input type="text" class="form-control" placeholder="Tìm kiếm tên thuốc...">
+    </div>
+    <div class="row">
+        <div style="max-height: 500px; overflow: auto">
+            <table class="table table-sm table-bordered table-hover" style="width: 2000px">
+                <thead>
+                    <tr>
+                        <th width="50px">STT</th>
+                        <th width="90px">Mã thuốc</th>
+                        <th width="150px">Tên thuốc</th>
+                        <th width="200px">Hoạt chất</th>
+                        <th width="100px">Số đăng ký</th>
+                        <th width="100px">Số lô</th>
+                        <th width="100px">Đơn vị tính</th>
+                        <th width="100px">Hạn sử dụng</th>
+                        <th width="100px">BDG/Generic</th>
+                        <th width="150px">Nhóm dược lý</th>
+                        <th width="220px">Nhà cung cấp</th>
+                        <th width="220px">Nhà sản xuất</th>
+                        <th width="120px">Nước sản xuất</th>
+                        <th width="150px">Điều kiện bảo quản</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody id="table_thuoc">
+                    <tr>
+                        <td>1</td>
+                        <td>TH0001</td>
+                        <td>Panadol Extra</td>
+                        <td>Paracetamol 1000mg + Cefuroxim 500mg</td>
+                        <td>VN-53643</td>
+                        <td>SG57FH46203</td>
+                        <td>Viên</td>
+                        <td>2026-10-07</td>
+                        <td>G</td>
+                        <td>Thuốc giảm đau</td>
+                        <td>CÔNG TY CỔ PHẦN ĐẦU TƯ PHÁT TRIỂN Y DƯỢC MEDIMED</td>
+                        <td>CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ PHÁT TRIỂN TÂY ÂU</td>
+                        <td>Anh</td>
+                        <td>25 độ C, tránh ánh nắng trực tiếp</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
+<script src="/static/danhmuc/thuoc.js"></script>
+{% endblock %}

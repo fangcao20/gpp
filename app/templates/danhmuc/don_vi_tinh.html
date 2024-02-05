@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>ĐƠN VỊ TÍNH</h3>
+    </div>
+    <div class="row mb-3">
+        <input type="text" class="form-control" placeholder="Nhập đơn vị tính...">
+    </div>
+    <div class="d-flex flex-row mb-2">
+        <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+        <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+        <button class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div class="row">
+        <div style="height: 500px; overflow: auto;">
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th width="50px">STT</th>
+                        <th>Đơn vị tính</th>
+                    </tr>
+                </thead>
+                <tbody id="table_don_vi_tinh">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/danhmuc/don_vi_tinh.js"></script>
+{% endblock %}

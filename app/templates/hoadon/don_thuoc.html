@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>ĐƠN THUỐC</h3>
+    </div>
+    <div class="row">
+        <p><strong>HÓA ĐƠN</strong></p>
+        <table class="table table-sm table-borderless fixed-table">
+            <tr>
+                <td>Mã hóa đơn</td>
+                <td><input type="text" class="form-control" disabled></td>
+                <td>Tên khách hàng</td>
+                <td><select name="" id="select_khach_hang" class="form-select"></select></td>
+                <td>Dược sĩ tư vấn</td>
+                <td><select name="" id="select_duoc_si" class="form-select"></select></td>
+                <td>Nhà thuốc</td>
+                <td><select name="" id="select_nha_thuoc" class="form-select"></select></td>
+            </tr>
+            <tr>
+                <td>Ngày lập</td>
+                <td><input type="date" class="form-control"></td>
+                <td>Ngày xuất</td>
+                <td><input type="date" class="form-control"></td>
+                <td>Bác sĩ</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Chẩn đoán</td>
+                <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Lý do xuất</td>
+                <td colspan="3"><input type="text" class="form-control"></td>
+                <td>Ghi chú</td>
+                <td colspan="3"><input type="text" class="form-control"></td>
+            </tr>
+        </table>
+        <div class="d-flex flex-row mb-2">
+            <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+            <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+            <button class="btn btn-sm func-btn btn-success">Sửa</button>
+            <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+        </div>
+        <div style="max-height: 300px; min-height: 100px">
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã HĐ</th>
+                        <th>Tên KH</th>
+                        <th>Ngày lập HĐ</th>
+                        <th>Ngày xuất HĐ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="selected-row">
+                          <td>1</td>
+                          <td>HD001</td>
+                          <td>Nguyễn Văn A</td>
+                          <td>2023-01-15</td>
+                          <td>2023-01-16</td>
+                    </tr>
+                    <tr>
+                          <td>2</td>
+                          <td>HD002</td>
+                          <td>Lê Văn C</td>
+                          <td>2023-03-25</td>
+                          <td>2023-03-26</td>
+                    </tr>
+                    <tr>
+                          <td>3</td>
+                          <td>HD003</td>
+                          <td>Trần Thị B</td>
+                          <td>2023-02-20</td>
+                          <td>2023-02-21</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+         <div class="d-flex justify-content-end mb-2" style="margin-top: 2px">
+            <input type="radio" name="time" style="margin-right: 5px">Tất cả
+            <input type="radio" name="time" style="margin-right: 5px; margin-left: 10px">Trong tháng
+            <input type="month" name="" style="margin-left: 10px" value="2023-12">
+        </div>
+        <hr>
+        <p><strong>CHI TIẾT HÓA ĐƠN</strong></p>
+        <div class="d-flex flex-row">
+            <p style="margin-right: 10px">Nhóm sản phẩm</p>
+            <select id="select_nhom_san_pham" style="width: 200px" class="form-select" onchange="select_san_pham(this)"></select>
+        </div>
+<!--        Sản phẩm là Thuốc-->
+        <div id="san_pham_thuoc" style="display: none; border: 1px solid gray; padding-top: 10px;">
+            <table class="table table-sm table-borderless fixed-table">
+                <tr>
+                    <td>Tên sản phẩm</td>
+                    <td><select id="select_thuoc" class="form-select"></select></td>
+                    <td>Số lô</td>
+                    <td><select id="select_solo" class="form-select"></select></td>
+                    <td>Đơn vị tính</td>
+                    <td><input type="text" id="don_vi_tinh" class="form-control" disabled></td>
+                    <td>Hạn sử dụng</td>
+                    <td><input type="text" id="han_su_dung" class="form-control" disabled></td>
+                </tr>
+                <tr>
+                    <td>Giá bán</td>
+                    <td><input type="number" name="" id="don_gia_vat" class="form-control" disabled></td>
+                    <td>Số lượng</td>
+                    <td><input type="number" name="" id="so_luong" class="form-control"></td>
+                    <td>Thành tiền</td>
+                    <td><input type="number" name="" id="thanh_tien" class="form-control" disabled></td>
+                    <td>Số lượng tồn</td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Ghi chú</td>
+                    <td colspan="3"><input type="text" class="form-control"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="san_pham_khac_thuoc">
+
+        </div>
+    </div>
+    <div class="d-flex flex-row mb-2 mt-2">
+        <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+        <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+        <button class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div>
+        <table class="table table-sm table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lô</th>
+                    <th>Giá bán</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Đơn vị tính</th>
+                    <th>Hạn sử dụng</th>
+                    <th>Nhà cung cấp</th>
+                    <th>Nhà sản xuất</th>
+                    <th>Nước sản xuất</th>
+                    <th>Nhóm dược lý</th>
+                    <th>Ghi chú</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script src="/static/danhmuc/don_thuoc.js"></script>
+{% endblock %}

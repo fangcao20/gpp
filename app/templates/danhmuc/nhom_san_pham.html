@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>NHÓM SẢN PHẨM</h3>
+    </div>
+    <div class="row mb-3">
+        <input type="text" class="form-control" placeholder="Nhập tên nhóm sản phẩm...">
+    </div>
+    <div class="d-flex flex-row mb-2">
+        <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+        <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+        <button class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div class="row">
+        <div>
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th width="50px">STT</th>
+                        <th>Nhóm sản phẩm</th>
+                    </tr>
+                </thead>
+                <tbody id="table_nhom_san_pham">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/danhmuc/nhom_san_pham.js"></script>
+{% endblock %}

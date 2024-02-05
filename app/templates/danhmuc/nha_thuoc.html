@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h3>THÔNG TIN NHÀ THUỐC</h3>
+    </div>
+    <div class="row">
+        <table class="table table-sm table-borderless">
+            <tr>
+                <td>Mã nhà thuốc</td>
+                <td><input type="text" class="form-control" disabled></td>
+                <td>Số đăng ký</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Dược sĩ đứng tên</td>
+                <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Tên nhà thuốc</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Mã số thuế</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Chứng chỉ hành nghề</td>
+                <td><input type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" class="form-control"></td>
+                <td>GPP</td>
+                <td><input type="text" class="form-control"></td>
+                <td>Ảnh</td>
+                <td><div class="d-flex flex-row justify-content-around">
+                    <div>
+                        <img id="selectedAvatar" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                        class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;" alt="example placeholder" />
+                    </div>
+                    <div class="mt-auto">
+                        <div class="btn btn-primary btn-rounded btn-sm">
+                            <label class="form-label text-white m-1" for="customFile2">Chọn ảnh</label>
+                            <input type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedAvatar')" />
+                        </div>
+                    </div>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="d-flex flex-row mb-2">
+        <button class="btn btn-sm func-btn btn-secondary">Xóa trắng</button>
+        <button class="btn btn-sm func-btn btn-primary">Thêm</button>
+        <button class="btn btn-sm func-btn btn-success">Sửa</button>
+        <button class="btn btn-sm func-btn btn-danger">Xóa</button>
+    </div>
+    <div class="row">
+        <div>
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã NT</th>
+                        <th>Tên nhà thuốc</th>
+                        <th>Số đăng ký</th>
+                        <th>Mã số thuế</th>
+                        <th>GPP</th>
+                        <th>Địa chỉ</th>
+                        <th>Dược sĩ đứng tên</th>
+                        <th>Chứng chỉ hành nghề</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/danh_muc.js"></script>
+{% endblock %}
